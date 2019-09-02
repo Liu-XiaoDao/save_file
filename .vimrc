@@ -5,10 +5,36 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'ctrlpvim/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'godlygeek/tabular'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+Bundle 'Yggdroot/indentLine'
 " Bundle 'Valloric/YouCompleteMe'
 filetype plugin indent on
 
+" 插件管理
+" 树形菜单
+" 状态栏
+" Ctrlp 快速文件搜索
+" tagbar
+" 显示行尾无用空格
+" 快速移动
+" 宏定义提示
+" 语法块吧
+" 快速注释
 
+
+" 基础设置
+set nu
+set ts=2
+set expandtab
+set autoindent
 
 
 "窗口切换配置
@@ -54,6 +80,39 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
+
+" tagbar
+map <F8> :TagbarToggle<cr>
+let g:tagbar_ctags_bin = 'ctags'
+let g:tagbar_width = 60
+
+
+
+" 标记行尾无效空格
+map <leader><space> :FixWhitespace<cr>   " 去掉末尾空格
+
+
+
+
+" 宏定义补全 ultisnips
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsUsePythonVersion = 3
+
+
+
+" 快速注释
+let NERDSpaceDelims = 1
+
+
+" 代码对齐
+" \bb                 按=号对齐代码 [Tabular插件]
+nmap <leader>bb :Tab /=<CR>
+" \bn                 自定义对齐    [Tabular插件]
+nmap <leader>bn :Tab /
+
+
 " YouCompleteMe
 set runtimepath+=~/.vim/bundle/YouCompleteMe
 let g:ycm_collect_identifiers_from_tags_files = 1           " 开启 YCM 基于标签引擎
@@ -72,3 +131,10 @@ let g:ycm_show_diagnostics_ui = 0                           " 禁用语法检查
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |            " 回车即选中当前项
 nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|     " 跳转到定义处
 "let g:ycm_min_num_of_chars_for_completion=2                "从第2个键入字符就开始罗列匹配项
+
+
+" Yggdroot/indentLine 代码对齐线
+let g:indentLine_char = '¦'
+let g:indentLine_color_term = 239
+"映射到ctrl+i键
+map <C-i> :IndentLinesToggle<CR>
