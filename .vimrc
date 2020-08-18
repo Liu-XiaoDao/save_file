@@ -235,3 +235,11 @@ set guifont=Monaco:h17 "设置字体和字的大小
 
 " 显示最近打开过的文件
 nmap <F3> :MRU<cr>
+
+" 输入时前面的小点
+highlight whitespaceEOL term=reverse ctermbg=red guibg=red
+match whitespaceEOL /\s\+\(\%#\)\@!$/
+syntax match whitespaceEOL /\s\+$/
+syntax match ColorColumn /\%>80v.\+/
+set list "显示空格和行尾"
+set listchars=tab:..,trail:.
